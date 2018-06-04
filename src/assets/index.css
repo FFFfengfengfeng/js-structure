@@ -8,3 +8,16 @@ html,body{
     font-weight: 400;
     font-size: 14px;
 }
+a{
+    text-decoration: none;
+    color: inherit;
+}
+input, textarea, keygen, select, button {
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    padding: 0;
+}

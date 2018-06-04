@@ -34,7 +34,9 @@
             </el-col>
         </el-row>
         <el-row>
-            <el-button type="primary" plain size="small">新建活动</el-button>
+            <el-button type="primary" plain size="small" >
+                <router-link to="/extend/actadd">新建活动</router-link>
+            </el-button>
             <el-button type="primary" plain size="small">活动导出</el-button>
             <el-button type="primary" plain size="small">投放</el-button>
             <el-button type="primary" plain size="small">暂停</el-button>

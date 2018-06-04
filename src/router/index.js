@@ -10,6 +10,8 @@ Vue.use(Router)
 const Home = r => require.ensure([], () => r(require('../views/home/Home.vue')), 'Home');
 // 推广-活动
 const Active = r => require.ensure([], () => r(require('../views/extend/Active.vue')), 'Active');
+// 推广-活动创建
+const Actadd = r => require.ensure([], () => r(require('../views/extend/Actadd.vue')), 'Actadd');
 // 推广-创意
 const Create = r => require.ensure([], () => r(require('../views/extend/Create.vue')), 'Create');
 // 报表-投放
@@ -54,6 +56,7 @@ export default new Router({
         { path: '/', component: Home },
         // 推广
         { path: '/extend/active', component: Active },
+        { path: '/extend/actadd', component: Actadd },
         { path: '/extend/create', component: Create },
         // 报表
         { path: '/report/active', component: Ractive }, 
