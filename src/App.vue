@@ -6,16 +6,15 @@
             </el-menu>
         </el-header>
         <el-container>
-            <el-aside width="200px">
+            <el-aside width="201px">
                 <el-menu background-color="#545c64"
                          text-color="#fff"
                          active-text-color="#ffd04b"
                          default-active="1"
-                         unique-opened="true"
-                         class="el-menu-vertical-demo" 
-                         @open="handleOpen" 
-                         @close="handleClose">
-                    <el-menu-item index="1">
+                         :unique-opened=true
+                         :router=true
+                         class="el-menu-vertical-demo">
+                    <el-menu-item index="/">
                         <i class="el-icon-home"></i>
                         <span slot="title">首页</span>
                     </el-menu-item>
@@ -24,53 +23,57 @@
                             <i class="el-icon-extend"></i>
                             <span>推广</span>
                         </template>
-                        <el-menu-item index="1-1">活动</el-menu-item>
-                        <el-menu-item index="1-2">创意</el-menu-item>
+                        <el-menu-item index="2-1" route="/extend/active">活动</el-menu-item>
+                        <el-menu-item index="2-2" route="/extend/create">创意</el-menu-item>
                     </el-submenu>
                     <el-submenu index="3">
                         <template slot="title">
                             <i class="el-icon-state"></i>
                             <span>报表</span>
                         </template>
-                        <el-menu-item index="1-1">投放报表</el-menu-item>
-                        <el-menu-item index="1-2">活动报表</el-menu-item>
-                        <el-menu-item index="1-2">创意报表</el-menu-item>
-                        <el-menu-item index="1-2">日期报表</el-menu-item>
-                        <el-menu-item index="1-2">时段报表</el-menu-item>
-                        <el-menu-item index="1-2">媒体报表</el-menu-item>
-                        <el-menu-item index="1-2">地域报表</el-menu-item>
+                        <el-menu-item index="3-1" route="/report/launch">投放报表</el-menu-item>
+                        <el-menu-item index="3-2" route="/report/active">活动报表</el-menu-item>
+                        <el-menu-item index="3-3" route="/report/create">创意报表</el-menu-item>
+                        <el-menu-item index="3-4" route="/report/date">日期报表</el-menu-item>
+                        <el-menu-item index="3-5" route="/report/time">时段报表</el-menu-item>
+                        <el-menu-item index="3-6" route="/report/media">媒体报表</el-menu-item>
+                        <el-menu-item index="3-7" route="/report/region">地域报表</el-menu-item>
                     </el-submenu>
                     <el-submenu index="4">
                         <template slot="title">
                             <i class="el-icon-finance"></i>
                             <span>财务</span>
                         </template>
-                        <el-menu-item index="1-1">消费记录</el-menu-item>
-                        <el-menu-item index="1-2">充值记录</el-menu-item>
-                        <el-menu-item index="1-2">转账记录</el-menu-item>
+                        <el-menu-item index="4-1" route="/finance/consume">消费记录</el-menu-item>
+                        <el-menu-item index="4-2" route="/finance/recharge">充值记录</el-menu-item>
+                        <el-menu-item index="4-3" route="/finance/transfer">转账记录</el-menu-item>
                     </el-submenu>
                     <el-submenu index="5">
                         <template slot="title">
                             <i class="el-icon-users"></i>
                             <span>用户</span>
                         </template>
-                        <el-menu-item index="1-1">操作日志</el-menu-item>
-                        <el-menu-item index="1-2">账户信息</el-menu-item>
-                        <el-menu-item index="1-2">提交资质</el-menu-item>
-                        <el-menu-item index="1-2">品牌LOGO</el-menu-item>
-                        <el-menu-item index="1-2">用户预警</el-menu-item>
-                        <el-menu-item index="1-2">安全中心</el-menu-item>
+                        <el-menu-item index="5-1" route="/users/log">操作日志</el-menu-item>
+                        <el-menu-item index="5-2" route="/users/info">账户信息</el-menu-item>
+                        <el-menu-item index="5-3" route="/users/refer">提交资质</el-menu-item>
+                        <el-menu-item index="5-4" route="/users/logo">品牌LOGO</el-menu-item>
+                        <el-menu-item index="5-5" route="/users/warn">用户预警</el-menu-item>
+                        <el-menu-item index="5-6" route="/users/safe">安全中心</el-menu-item>
                     </el-submenu>
                     <el-submenu index="6">
                         <template slot="title">
                             <i class="el-icon-tool"></i>
                             <span>工具</span>
                         </template>
-                        <el-menu-item index="1-1">定向包</el-menu-item>
+                        <el-menu-item index="6-1" route="/tool/directional">定向包</el-menu-item>
                     </el-submenu>
                 </el-menu>
             </el-aside>
-            <el-main>Main</el-main>
+            <el-main>
+                <transition name="fade" mode="out-in">
+                    <router-view></router-view>
+                </transition>
+            </el-main>
         </el-container>
     </el-container>
 </template>
@@ -79,12 +82,7 @@
 export default {
     name: "App",
     methods: {
-        handleOpen(key, keyPath) {
-            console.log(key, keyPath);
-        },
-        handleClose(key, keyPath) {
-            console.log(key, keyPath);
-        }
+
     }
 };
 </script>
@@ -100,5 +98,11 @@ export default {
 #app .el-aside,
 #app .el-menu{
     height: 100%;
+}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
 }
 </style>
