@@ -72,7 +72,7 @@
                             <i class="el-icon-tool"></i>
                             <span>工具</span>
                         </template>
-                        <el-menu-item index="6-1" route="/tool/directional">定向包</el-menu-item>
+                        <el-menu-item index="6-1" route="/tool/package">定向包</el-menu-item>
                     </el-submenu>
                 </el-menu>
             </el-aside>

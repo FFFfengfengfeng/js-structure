@@ -161,4 +161,7 @@ export default {
 .el-select-dropdown__item.selected{
     font-weight: normal;
 }
+.el-form{
+    width: 460px;
+}
 </style>
