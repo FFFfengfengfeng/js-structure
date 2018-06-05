@@ -94,6 +94,12 @@ export default {
 #app .el-header{
     padding: 0;
 }
+#app .el-table{
+    margin-top: 20px;
+}
+#app .el-submenu .el-menu-item{
+    padding-left: 50px !important;
+}
 #app .el-container,
 #app .el-aside,
 #app .el-menu{
