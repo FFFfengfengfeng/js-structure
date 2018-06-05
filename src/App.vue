@@ -1,8 +1,15 @@
 <template>
     <el-container id="app">
         <el-header>
-            <el-menu class="el-menu-demo"
-                     mode="horizontal">
+            <el-menu mode="horizontal">
+                <el-row>
+                    <el-col :span="3">
+                        <img class="s-logo" src="./assets/img/logo.png" alt="" srcset="">
+                    </el-col>
+                    <el-col :span="2" :offset="19">
+                        <el-button class="s-log-out" type="primary" plain>退出</el-button>
+                    </el-col>
+                </el-row>
             </el-menu>
         </el-header>
         <el-container>
@@ -98,7 +105,7 @@ export default {
     margin-top: 20px;
 }
 #app .el-submenu .el-menu-item{
-    padding-left: 50px !important;
+    padding-left: 52px !important;
 }
 #app .el-container,
 #app .el-aside,
