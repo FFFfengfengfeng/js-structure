@@ -155,9 +155,6 @@ export default {
 
 
 <style scoped>
-.el-form{
-    width: 460px;
-}
 .el-card{
     margin-bottom: 20px;
 }
