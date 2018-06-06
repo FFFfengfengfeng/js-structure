@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- 新建活动 -->
         <el-card class="box-card">
             <div slot="header" class="clearfix">
                 <h4>新建活动</h4>
@@ -49,6 +50,7 @@
                 </el-form>
             </div>
         </el-card>
+        <!-- 广告目的 -->
         <el-card class="box-card">
             <div slot="header" class="clearfix">
                 <h4>广告目的</h4>
@@ -118,6 +120,7 @@
                 </el-form>
             </div>
         </el-card>
+        <!-- 广告位置 -->
         <el-card class="box-card">
             <div slot="header" class="clearfix">
                 <h4>广告位设置</h4>
@@ -125,12 +128,33 @@
             <div class="text item">
                 <el-form ref="form" 
                          :model="form"
-                         label-width="100px">
+                         label-width="100px"
+                         style="width: 820px;">
                     <el-form-item label="广告形式:">
-                        <el-radio-group v-model="form.actAdFormat">
+                        <el-radio-group v-model="form.actAdFormat" @change="actAdFormatChange">
                             <el-radio :label="0">移动</el-radio>
                             <el-radio :label="1">PC</el-radio>
                         </el-radio-group>
+                    </el-form-item>
+                    <el-form-item label="">
+                        <el-checkbox-group size="small" v-model="form.actAdFormatList">
+                            <div class="s-checkbox-img" v-if="form.actAdFormat === 0">
+                                <img src="../assets/img/ad_type_spot.png" alt="">
+                                <el-checkbox-button class="s-btn-spot" label="0">插屏</el-checkbox-button>
+                            </div>
+                            <div class="s-checkbox-img">
+                                <img src="../assets/img/ad_type_video.png" alt="">
+                                <el-checkbox-button class="s-btn-video" label="1">视频</el-checkbox-button>
+                            </div>
+                            <div class="s-checkbox-img" v-if="form.actAdFormat === 0">
+                                <img src="../assets/img/ad_type_feed.png" alt="">
+                                <el-checkbox-button class="s-btn-feed" label="2">信息流</el-checkbox-button>
+                            </div>
+                            <div class="s-checkbox-img">
+                                <img src="../assets/img/ad_type_banner.png" alt="">
+                                <el-checkbox-button class="s-btn-banner" label="3">横幅</el-checkbox-button>
+                            </div>
+                        </el-checkbox-group>
                     </el-form-item>
                     <el-form-item label="结算方式:">
                         <el-radio-group v-model="form.actSettlement">
@@ -149,19 +173,19 @@
 <script>
 export default {
     name: 'Direct',
-    props: ['form']
+    props: ['form'],
+    methods: {
+        actAdFormatChange: function() {
+            this.$emit('clearActAdFormat');
+        }
+    }
 }
 </script>
 
 
 <style scoped>
-.el-card{
-    margin-bottom: 20px;
-}
 .el-select-dropdown__item.selected{
     font-weight: normal;
 }
-.el-form{
-    width: 460px;
-}
+
 </style>

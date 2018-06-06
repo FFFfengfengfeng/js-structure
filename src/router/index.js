@@ -48,6 +48,8 @@ const Warn = r => require.ensure([], () => r(require('../views/users/Warn.vue'))
 const Safe = r => require.ensure([], () => r(require('../views/users/Safe.vue')), 'Safe');
 // 工具-定向包
 const Package = r => require.ensure([], () => r(require('../views/tool/Package.vue')), 'Package');
+// 工具-添加定向包
+const PackAdd = r => require.ensure([], () => r(require('../views/tool/PackAdd.vue')), 'PackAdd');
 
 
 export default new Router({
@@ -79,5 +81,6 @@ export default new Router({
         { path: '/users/warn', component: Warn },
         // 工具
         { path: '/tool/package', component: Package }, 
+        { path: '/tool/packAdd', component: PackAdd }, 
     ]
 })

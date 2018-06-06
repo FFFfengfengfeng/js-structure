@@ -1,6 +1,7 @@
 <template>
     <div>
-        <Direct :form="form"></Direct>
+        <Direct :form="form"
+                @clearActAdFormat="updaTeActAdFormat"></Direct>
         <Setting :form="form"></Setting>
         <el-card class="box-card">
             <div slot="header" class="clearfix">
@@ -47,19 +48,36 @@ export default {
                 actDate     : [new Date(), new Date()],     // 投放日期
                 actHour     : 0,     // 投放小时
                 actLandPage : '', // 落地页
-                actExtendType: 0, // 推广类型
+                actExtendType: 0,  // 推广类型
                 actAdFormat: 0, // 广告形式
+                actAdFormatList: [], // 广告形式选择
                 actSettlement: 0, // 结算方式
+                actArea: 0, // 受众区域
+                regionList: [], //区域列表
+                provincesList: [], // 城市列表
+                basicAttr: 0, //基本属性
+                behaviorDirect: 0, // 行为定向
+                behaviorFilter: 0, // 行为过滤
+                deviceType: 0, // 设备类型
+                deviceBrand: 0, // 设备品牌
+                deviceSystem: 0, // 操作系统
+                deviceNetwork: 0, // 联网方式
+                deviceOperator: 0, // 运营商
+                deviceMedia: 0, // 媒体
+
             },
+        }
+    },
+    methods: {
+        updaTeActAdFormat: function() {
+            this.form.actAdFormatList = [];
         }
     }
 }
 </script>
 
 <style scoped>
-.el-form{
-    width: 460px;
-}
+
 </style>
 
 
