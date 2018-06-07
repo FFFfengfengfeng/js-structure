@@ -1,0 +1,13 @@
+html,body{
+    font-family: PingFang SC,Verdana,Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif;
+    font-size: 14px;
+}
+html,body,h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    padding: 0;
+}
+pre,code{
+    font-family: inherit;
+    font-size: 12px;
+    font-family: Consolas;
+}
