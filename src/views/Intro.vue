@@ -1,5 +1,5 @@
 <template>
-    <div>第一章</div>
+    <div class="container">第一章</div>
 </template>
 
 <script>
