@@ -13,6 +13,15 @@ Vue.config.productionTip = false
 
 Vue.use(iView);
 
+/**
+ * v-highlight directive
+ * @example
+ * `<pre>
+ *      <code v-highlight>
+ *          console.log(1);
+ *      </code>
+ * </pre>`
+ */
 Vue.directive('highlight', (el) => {
     hljs.highlightBlock(el);
 });

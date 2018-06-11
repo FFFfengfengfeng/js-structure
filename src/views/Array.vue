@@ -1,5 +1,5 @@
 <template>
-    <div>数组</div>
+    <div class="container">数组</div>
 </template>
 
 <script>

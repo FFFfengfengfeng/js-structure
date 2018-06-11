@@ -7,19 +7,19 @@
         </Header>
         <Layout>
             <Sider>
-                <Menu theme="light" active-name="1">
-                    <Menu-Item name="1">javascript简介</Menu-Item>
-                    <Menu-Item name="2">数组</Menu-Item>
-                    <Menu-Item name="3">栈</Menu-Item>
-                    <Menu-Item name="4">队列</Menu-Item>
-                    <Menu-Item name="5">链表</Menu-Item>
-                    <Menu-Item name="6">集合</Menu-Item>
-                    <Menu-Item name="7">字典和散列表</Menu-Item>
-                    <Menu-Item name="8">树</Menu-Item>
-                    <Menu-Item name="9">图</Menu-Item>
-                    <Menu-Item name="10">排序和搜索算法</Menu-Item>
-                    <Menu-Item name="11">算法模式</Menu-Item>
-                    <Menu-Item name="12">算法复杂度</Menu-Item>
+                <Menu theme="light" active-name="/" @on-select="selectMenu">
+                    <Menu-Item name="/">javascript简介</Menu-Item>
+                    <Menu-Item name="/array">数组</Menu-Item>
+                    <Menu-Item name="/stack">栈</Menu-Item>
+                    <Menu-Item name="/queue">队列</Menu-Item>
+                    <Menu-Item name="/list">链表</Menu-Item>
+                    <Menu-Item name="/set">集合</Menu-Item>
+                    <Menu-Item name="/hash">字典和散列表</Menu-Item>
+                    <Menu-Item name="/tree">树</Menu-Item>
+                    <Menu-Item name="/map">图</Menu-Item>
+                    <Menu-Item name="/sort">排序和搜索算法</Menu-Item>
+                    <Menu-Item name="/mode">算法模式</Menu-Item>
+                    <Menu-Item name="/complex">算法复杂度</Menu-Item>
                 </Menu>
             </Sider>
             <Content>
@@ -33,7 +33,15 @@
 
 <script>
 export default {
-    name: 'App'
+    name: 'App',
+    data() {
+        return { };
+    },
+    methods: {
+        selectMenu: function(name) {
+            this.$router.push({ path: name });
+        }
+    }
 }
 </script>
 
