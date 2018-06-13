@@ -1,13 +1,13 @@
 <template>
     <div id="app">
-        <Header>
+        <!-- <Header>
             <Row>
                 <Col span="4" offset="17">学习JavaScript数据结构与算法（第2版）</Col>
             </Row>
-        </Header>
+        </Header> -->
         <Layout>
-            <Sider>
-                <Menu theme="light" active-name="/" @on-select="selectMenu">
+            <Sider width="240">
+                <Menu theme="dark" width="auto" active-name="/" @on-select="selectMenu">
                     <Menu-Item name="/">javascript简介</Menu-Item>
                     <Menu-Item name="/array">数组</Menu-Item>
                     <Menu-Item name="/stack">栈</Menu-Item>
@@ -49,10 +49,13 @@ export default {
 #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    height: 100%;
 }
 .ivu-layout{
     width: 1190px;
     margin: 0 auto;
+    height: 100%;
 }
 .ivu-layout-header{
     color: #FFF;
