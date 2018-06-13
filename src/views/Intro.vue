@@ -36,6 +36,31 @@
         <p>当使用==操作符时,如果两个比较的数据不是同一种数据类型,将会进行隐式的类型转换</p>
         <p>而===操作符,不仅会比较值是否相等,还会比较类型是否相等</p>
         <h4>控制语句</h4>
+        <p>条件控制语句:</p>
+        <pre>
+            <code v-highlight>
+                if (condition) {
+                    branch
+                } else if (condition) {
+                    branch
+                } else {
+                    branch
+                }
+            </code>
+        </pre>
+        <p>循环语句:</p>
+        <pre>
+            <code v-highlight>
+                // while 循环
+                if (condition) {
+                    branch
+                } else if (condition) {
+                    branch
+                } else {
+                    branch
+                }
+            </code>
+        </pre>
     </div>
 </template>
 
