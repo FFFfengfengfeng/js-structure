@@ -54,6 +54,26 @@ export default {
                 {
                     type: 'undefined',
                     value: 'false',
+                },
+                {
+                    type: 'null',
+                    value: 'false'
+                },
+                {
+                    type: '布尔值',
+                    value: 'true还是true, false还是false'
+                },
+                {
+                    type: '数字',
+                    value: '+0, -0和NaN都是false, 其他都是true'
+                },
+                {
+                    type: '字符串',
+                    value: '如果是空字符串则为false, 其他都是true'
+                },
+                {
+                    type: '对象',
+                    value: 'true'
                 }
             ]
         };
