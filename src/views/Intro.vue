@@ -78,7 +78,97 @@
             </code>
         </pre>
         <h4>js面向对象</h4>
-        
+        <p>js中的对象是一组名值对的集合</p>
+        <p>面向对象就是通过类,创建很多的对象,在类中定义对象的特性</p>
+        <h3>调试工具</h3>
+        <p>调试是开发当中很重要的一环(大部分时间我们都用在调试上)</p>
+        <p>我们可以通过浏览器的控制台进行调试 F12可以打开浏览器的控制台</p>
+        <p>除了浏览器的控制台, 很多IDE都带有debug的功能, webStrom, Sublime Text等</p>
+        <h3>ECMAScript概述</h3>
+        <p>现在主流浏览器已经对ECMAScript的新特性有很好的兼容,而且通过自动化构建工具gulp, grunt或者打包工具webpack我们可以尽情使用ES6,ES7的新特性</p>
+        <p>ECMAScript和javascript的关系, ECMAScript是一个标准, javascript是一个实现, actionScript和Jscript都遵循这个标准或者说规范</p>
+        <p>在使用es6或者es7的新特性之前,我们可以从MDN上查看这些特性的兼容性,针对项目作出选择</p>
+        <h4>使用babel</h4>
+        <p>babel是个什么东东,简单说,babel就是可以让我们尽情使用es6,es7的新特性,babel将会编译成es5的代码,同时为我们提供叠片</p>
+        <h3>ES6新增</h3>
+        <p>let和const</p>
+        <p>模板字面量</p>
+        <p>解构</p>
+        <p>展开操作符</p>
+        <p>箭头函数</p>
+        <p>类</p>
+        <h4>let和const代替var声明</h4>
+        <p>es5中使用var声明的变量,可以重复声明,后者将会覆盖之前的值,同时js中没有块级作用域</p>
+        <p>let和const声明可以作为一个块级作用域的替代方案,同时重复声明将会报错,这让js的表现更加合理</p>
+        <p>const跟let的作用一样,不过const声明的变量是只读类型,不能修改,修改将会报错,就是一个常量</p>
+        <p>因此,我们可以将不改的变量都用const声明,都需要或可能要重新赋值的变量才使用let声明</p>
+        <h4>模板字面量</h4>
+        <p>es6中新加的模板字面量是一个非常有用的特性</p>
+        <p>举个例子:</p>
+        <pre>
+            <code v-highlight>
+                /* es5中字符串拼接 */
+                var str = '';
+                for(var i = 0; i &lt; data.length; i ++) {
+                    str += '&lt;p&gt;' + data[i].name + '&lt;/p&gt;';
+                }
+
+                /* es6中拼接字符串 */
+                let str = '';
+                for(let i = 0; i &lt; data.length; i ++) {
+                    str += `&lt;p&gt;${data[i].name}&lt;/p&gt;`;
+                }
+            </code>
+        </pre>
+        <p>好处一目了然,代码更加优雅,可读性更强,这只是其中一个好处</p>
+        <h4>箭头函数</h4>
+        <p>如果之前了解过coffeeScript的话, 箭头函数就很好理解了</p>
+        <p>箭头函数的写法:</p>
+        <pre>
+            <code v-highlight>
+                /* 箭头函数 */
+                let a = (args) => {
+                    /* do something */
+                }
+            </code>
+        </pre>
+        <p>箭头函数,与普通函数在表现上有一些差异, 对象中的函数如果用箭头函数, this将不再指向这个对象而是window</p>
+        <p>所有如果使用vue开发,methods中声明的方法如果用箭头函数将会找不到vue实例而报错</p>
+        <h4>函数默认参数</h4>
+        <p>es6允许我们在声明函数的时候, 给参数定义默认值</p>
+        <pre>
+            <code v-highlight>
+                /* es5的做法 */
+                function something(a) {
+                    var a = a || 0;
+                }
+
+                /* es6的做法 */
+                function something(a = 0) {
+
+                }
+            </code>
+        </pre>
+        <p>在声明函数的时候同时定义了默认参数, 不再需要多些额外的判断</p>
+        <h4>声明展开和剩余参数</h4>
+        <p>在es5中,我们通过apply()把数组转化为参数</p>
+        <pre>
+            <code v-highlight>
+                var params = [1, 2, 3];
+
+                /* es5的做法 */
+                function something() {
+                    
+                }
+                something.apply(undefined, params);
+
+                /* es6的做法 */
+                function something(...params) {
+
+                }
+            </code>
+        </pre>
+        <p>同时展开操作符也可以作为剩余参数作为使用</p>
     </div>
 </template>
 
