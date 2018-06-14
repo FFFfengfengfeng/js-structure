@@ -51,16 +51,34 @@
         <p>循环语句:</p>
         <pre>
             <code v-highlight>
-                // while 循环
-                if (condition) {
-                    branch
-                } else if (condition) {
-                    branch
-                } else {
-                    branch
+                /*while 循环*/ 
+                while(condition) {
+                    /*do something*/
+                }
+
+                /*do...while循环*/
+                do {
+                    /*do something*/
+                } while(condition)
+
+                /*for循环*/
+                for(condition) {
+                    /*do something*/
                 }
             </code>
         </pre>
+        <h4>函数</h4>
+        <p>函数在js中非常重要,是一等公民;</p>
+        <p>声明函数的语法: function关键字 函数名(参数) {}</p>
+        <pre>
+            <code v-highlight>
+                function a() {
+                    /* do something */
+                }
+            </code>
+        </pre>
+        <h4>js面向对象</h4>
+        
     </div>
 </template>
 
