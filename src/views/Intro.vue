@@ -169,6 +169,43 @@
             </code>
         </pre>
         <p>同时展开操作符也可以作为剩余参数作为使用</p>
+        <h4>类</h4>
+        <p>es6新增了类,通过关键字class创建</p>
+        <pre>
+            <code v-highlight>
+                /* es5的做法 */
+                function Book(title, pages, author) {
+                    this.title = title;
+                    this.pages = pages;
+                    this.author = author;
+                }
+
+                Book.prototype.printTitle() {
+                    console.log(this.title);
+                }
+
+                /* es6的做法 */
+                class Book {
+                    constructor(title, pages, author) {
+                        this.title = title;
+                        this.pages = pages;
+                        this.author = author;
+                    }
+
+                    printTitle() {
+                        console.log(this.title);
+                    }
+                }
+            </code>
+        </pre>
+        <p>es6中新增了extends关键字,可以通过extends实现继承, 用法跟php,java差不多</p>
+        <p>在class内部,可以使用属性存取器get, set</p>
+        <h3>ES7新功能</h3>
+        <h4>Array.prototype.includes</h4>
+        <p>es7新增的includes方法,使我们在判断数组是否包含某个元素更加方便快捷</p>
+        <p>不再需要将以前一样通过indexof判断</p>
+        <h4>更加简洁的异步语法</h4>
+        <p style="padding-bottom: 100px;">asnyc和await现在异步操作</p>
     </div>
 </template>
 
