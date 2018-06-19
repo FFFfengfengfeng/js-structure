@@ -57,6 +57,22 @@
         <h3>js中数组方法参考</h3>
         <p>js中的数组有很多有用的方法,参照表格</p>
         <Table border :columns="columns1" :data="data1"></Table>
+        <h3>数组合并</h3>
+        <p>concat()方法是用于合并两个数组,这个方法不会改变原数组,会返回一个新的副本(深拷贝)</p>
+        <h3>ES6和数组的新功能</h3>
+        <p>ES6数组新增了'Symbol.iterator'属性,可以迭代数组</p>
+        <pre>
+            <code v-highlight>
+                var arr = [1, 2, 3, 4, 5];
+
+                /* Symbol.iterator */
+                var iterator = arr[Symbol.iterator]();
+
+                while(iterator.next().value !== undefined) {
+                    console.log(iterator.next().value);
+                }
+            </code>
+        </pre>
     </div>
 </template>
 
@@ -127,6 +143,10 @@ export default {
                 {
                     name: 'toString',
                     intro: '讲数组作为字符串输出'
+                },
+                {
+                    name: 'valueOf',
+                    intro: '和toString类似,将数组作为字符串返回'
                 }
             ]
         };
