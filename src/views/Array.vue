@@ -73,6 +73,13 @@
                 }
             </code>
         </pre>
+        <p>新增方法对照表</p>
+        <Table border :columns="columns2" :data="data2"></Table>
+        <h4>Array.from</h4>
+        <p>可以调用Array.from方法复制一个数组,或者从数组中过滤元素</p>
+        <h4>Array.of</h4>
+        <p>Array.of可以根据传入的参数创建一个新的数组,也可以使用该方法复制一个已有的数组</p>
+        <h3>输出数组为字符串</h3>
     </div>
 </template>
 
@@ -147,6 +154,46 @@ export default {
                 {
                     name: 'valueOf',
                     intro: '和toString类似,将数组作为字符串返回'
+                }
+            ],
+            columns2: [
+                {
+                    title: '方法名',
+                    key: 'name'
+                }, 
+                {
+                    title: '描述',
+                    key: 'intro'
+                }
+            ],
+            data2: [
+                {
+                    name: 'entries',
+                    intro: '返回一个迭代器,调用next()方法,返回的value是一个数组,0是数组下标,1是数组元素'
+                },
+                {
+                    name: 'keys',
+                    intro: '返回一个迭代器,调用next()方法,返回的value是数组下标'
+                },
+                {
+                    name: 'fill',
+                    intro: '使用静态值填充一个数组,用法跟splice类似'
+                },
+                {
+                    name: 'copyWithin',
+                    intro: '复制元素中的一系列元素到该数组的指定位置'
+                },
+                {
+                    name: 'find',
+                    intro: '接收一个函数,搜索满足回调函数条件的值,找不到的时候返回false'
+                },
+                {
+                    name: 'findIndex',
+                    intro: '接收一个函数,搜索满足回调函数条件的下标,不满足会返回-1'
+                },
+                {
+                    name: 'includes',
+                    intro: '如果数组包含某个元素,则返回true, 否则返回false, 如果传入一个开始索引,会从开始索引开始搜索'
                 }
             ]
         };
