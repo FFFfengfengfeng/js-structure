@@ -74,7 +74,37 @@
             </code>
         </pre>
         <h3>优先队列</h3>
-        <p></p>
+        <p>日常生活中有很多使用队列的例子,同时有很多是队列的修改版,例如优先队列</p>
+        <p>机场登机的时候,老人和小孩优先登机</p>
+        <p>实现优先队列,可以设置优先级,添加元素的时候在合适的位置插入元素</p>
+        <pre>
+            <code v-highlight>
+                class Priority extends Queue {
+                    add(element, priority) {
+                        let flag = false;
+                        for(lei i = 0; i &lt; items.length; i ++) {
+                            if (priority &lt; items[i].priority) {
+                                this.items.splice(i, 0, {
+                                    element: element,
+                                    priority: priority
+                                });
+                                flag = true;
+                                break;
+                            }
+                        }
+                        if (!flag) {
+                            this.items.push({
+                                element: element,
+                                priority: priority
+                            });
+                        }
+                    }
+                }
+            </code>
+        </pre>
+        <p>优先队列是通过集成队列而来的,但是add方法,优先队列与普通队列是不一样的</p>
+        <h3>循环队列--击鼓传花</h3>
+        <p>队列的另一个修改版就是循环队列,循环遍历元素,当某一个时刻,或者到达某一个条件就停下出来,删除该元素</p>
     </div>
 </template>
 
