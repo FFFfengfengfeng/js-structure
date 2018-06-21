@@ -35,8 +35,8 @@
         <p>pop()方法是用于从栈的栈顶移除元素,可以使用数组的pop()方法实现</p>
         <pre>
             <code v-highlight>
-                Stack.prototype.pop() = function(element) {
-                    this.items.pop(element);
+                Stack.prototype.pop() = function() {
+                    this.items.pop();
                 }
             </code>
         </pre>
@@ -99,16 +99,66 @@
         </pre>
         <h3>ES6和栈</h3>
         <p>ES6因为有类,所以在创建stack用es6的class实现的话,语法将会更加简洁</p>
+        <pre>
+            <code v-highlight>
+                class Stack {
+                    constructor() {
+                        this.items = [];
+                    }
+
+                    push(element) {
+                        this.items.push(element);
+                    }
+                }
+            </code>
+        </pre>
+        <h3>使用栈解决问题</h3>
+        <p>使用栈可以解决很多的问题,例如汉诺塔问题</p>
+        <h4>从十进制到二进制</h4>
+        <Form ref="formInline" inline>
+            <FormItem prop="user">
+                <Input type="text" v-model="decimal" placeholder="输入一个十进制数"></Input>
+            </FormItem>
+            <FormItem prop="password">
+                <Input type="text" v-model="binary" placeholder="二进制数"></Input>
+            </FormItem>
+            <FormItem>
+                <Button type="primary" @click="transformNum">转换</Button>
+            </FormItem>
+        </Form>
     </div>
 </template>
 
 <script>
+import Stack from '../assets/stack.js'
+
 export default {
     name: 'Stack',
     data() {
         return {
-
+            decimal: '',
+            binary: '',
+            stack: new Stack()
         };
+    },
+
+    methods: {
+        transformNum: function() {
+            let _this = this;
+            let decimal = Number(_this.decimal);
+            let rem, binary;
+
+            _this.binary = '';
+            while(decimal > 0) {
+                rem = Math.floor(decimal % 2);
+                _this.stack.push(rem);
+                decimal = Math.floor(decimal / 2);
+            }
+
+            while(!_this.stack.isEmpty()) {
+                _this.binary += _this.stack.pop().toString();
+            }
+        }  
     }
 }
 </script>
