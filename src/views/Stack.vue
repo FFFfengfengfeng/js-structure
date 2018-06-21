@@ -71,10 +71,34 @@
         <pre>
             <code v-highlight>
                 Stack.prototype.print() = function() {
-                    console.log(this.items.toString());
+                    return this.items.toString();
                 }
             </code>
         </pre>
+        <p>size()方法是用于返回栈的长度</p>
+        <pre>
+            <code v-highlight>
+                Stack.prototype.size() = function() {
+                    return this.items.length;
+                }
+            </code>
+        </pre>
+        <h4>使用栈</h4>
+        <pre>
+            <code v-highlight>
+                var stack = new Stack();
+                
+                stack.push(5);
+                stack.push(8);
+                stack.print(); /* 5, 8 */
+                stack.size();  /* 2 */
+                stack.peek();  /* 8 */
+                stack.pop();
+                stack.print(); /* 5 */
+            </code>
+        </pre>
+        <h3>ES6和栈</h3>
+        <p>ES6因为有类,所以在创建stack用es6的class实现的话,语法将会更加简洁</p>
     </div>
 </template>
 
