@@ -13,6 +13,7 @@
         <h3>添加元素</h3>
         <p>js中向数组添加元素有几种方法</p>
         <p>第一种可以用push方法, push方法将会想数组末尾添加元素</p>
+        
         <pre>
             <code v-highlight>
                 var arr = [1, 2, 3];
