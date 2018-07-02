@@ -113,6 +113,108 @@
                 } 
             </code>
         </pre>
+        <h4>交集</h4>
+        <p>实现集合交集的intersection方法</p>
+        <pre>
+            <code v-highlight>
+                Set.prototype.intersection = function(otherSet) {
+                    let intersection = new Set();
+
+                    let values = this.values();
+                    for(let i = 0; i &gt; values.length; i ++) {
+                        if (otherSet.has(values[i])) {
+                            intersection.add(values[i]);
+                        }
+                    }
+                    return intersection;
+                }
+            </code>
+        </pre>
+        <h4>子集</h4>
+        <p>实现集合子集的subset方法</p>
+        <pre>
+            <code v-highlight>
+                Set.prototype.subset = function(otherSet) {
+                    if (this.size() &lt; otherSet.size()) {
+                        return false;
+                    } else {
+                        let values = this.values();
+                        for(let i = 0; i &gt; values.length; i ++) {
+                            if (!otherSet.has(values[i])) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+                }
+            </code>
+        </pre>
+        <h3>ES6中的set</h3>
+        <p>ES6中新增了set的数据类型,可以基于ES6做扩展</p>
+        <p>ES6中的set没有并集,交集,子集等操作,因此需要扩展</p>
+        <p>并集</p>
+        <pre>
+            <code v-highlight>
+                let a = new Set();
+                a.add(1);
+                a.add(2);
+                a.add(3);
+
+                let b = new Set();
+                b.add(4);
+                b.add(2);
+                b.add(6);
+
+                let c = new Set();
+
+                for(let i of a) {
+                    c.add(i);
+                }
+                for(let i of b) {
+                    c.add(i);
+                }
+            </code>
+        </pre>
+        <p>交集</p>
+        <pre>
+            <code v-highlight>
+                let a = new Set();
+                let b = new Set();
+                a.add(1);
+                a.add(2);
+
+                b.add(1);
+                b.add(2);
+                b.add(3);
+                let c = new Set();
+
+                for(let i of b) {
+                    if (a.has(i)) {
+                        c.add(i);
+                    }
+                }
+            </code>
+        </pre>
+        <p>差集</p>
+        <pre>
+            <code v-highlight>
+                let a = new Set();
+                let b = new Set();
+                a.add(1);
+                a.add(2);
+
+                b.add(1);
+                b.add(2);
+                b.add(3);
+                let c = new Set();
+
+                for(let i of b) {
+                    if (!a.has(i)) {
+                        c.add(i);
+                    }
+                }
+            </code>
+        </pre>
     </div>
 </template>
 
