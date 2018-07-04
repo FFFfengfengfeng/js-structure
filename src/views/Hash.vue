@@ -25,16 +25,116 @@
         <p>size(), 返回字典的包含元素的数量,与数组的length属性类似</p>
         <p>keys(), 将字典所包含的所有键名以数组形式返回</p>
         <p>values(), 将字典的所有数值以数组的形式返回</p>
+        <p>has和set方法</p>
+        <pre>
+            <code v-highlight>
+                Dictionary.prototype.has = function(key) {
+                    return key in this.items;
+                }
+
+                Dictionary.prototype.set = function(key, value) {
+                    this.items[key] = value;
+                }
+            </code>
+        </pre>
+        <p>delete方法</p>
+        <pre>
+            <code v-highlight>
+                Dictionary.prototype.delete = function(key) {
+                    if (this.has(key)) {
+                        delete this.items[key];
+                        return true;
+                    }
+                    return false;
+                }
+            </code>
+        </pre>
+        <p>get和values方法</p>
+        <pre>
+            <code v-highlight>
+                Dictionary.prototype.get = function(key) {
+                    return this.has(key) ? this.items[key] : undefined;
+                }
+
+                Dictionary.prototype.values = function() {
+                    let values = [];
+
+                    for(let key in this.items) {
+                        if (this.has(key)) {
+                            values.push(this.items[key]);
+                        }
+                    }
+                    return values;
+                }
+            </code>
+        </pre>
+        <p>clear, size, keys, getItems方法</p>
+        <pre>
+            <code v-highlight>
+                Dictionary.prototype.clear = function() {
+                    this.items = {};
+                }
+
+                Dictionary.prototype.size = function() {
+                    return Object.keys(this.items).length;
+                }
+
+                Dictionary.prototype.keys = function() {
+                    return Object.keys(this.items);
+                }
+
+                Dictionary.prototype.getItems = function() {
+                    return this.items;
+                }
+            </code>
+        </pre>
+        <h3>使用Dictionary类</h3>
+        <p>
+            <Input v-model="key" placeholder="输入key" style="width: 150px"></Input>
+            <Input v-model="value" placeholder="输入value" style="width: 150px"></Input>
+            <Button type="primary" @click="hashSet">调用set方法</Button>
+        </p>
+        <p>
+            <Input v-model="query" placeholder="输入query" style="width: 150px"></Input>
+            <Input v-model="result" placeholder="结果" style="width: 150px"></Input>
+            <Button type="primary" @click="hashHas">调用has方法</Button>
+        </p>
+        <p>dictionary.size: {{size}}</p>
+        <h3>散列表</h3>
+        <p>散列表,hashTable类或者hashMap,是Dictionary类的一种散列表实现方式</p>
+        <p>散列算法,</p>
     </div>
 </template>
 
 <script>
+import Hash from '../assets/Dictionary.js';
+
 export default {
-    name: 'Array',
+    name: 'Hash',
     data() {
         return {
-
+            key: '',
+            value: '',
+            query: '',
+            result: '',
+            hash: new Hash(),  
+            size: 0
         };
+    },
+
+    methods: {
+        hashSet: function() {
+            let key = this.key,
+                value = this.value;
+            this.hash.set(key, value);
+            this.size = this.hash.size();
+            console.log(this.hash.keys());
+            console.log(this.hash.values());
+            console.log(this.hash.getItems());
+        },
+        hashHas: function() {
+            this.result = this.hash.has(this.query).toString();
+        }
     }
 }
 </script>
