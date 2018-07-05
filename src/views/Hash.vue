@@ -102,7 +102,17 @@
         <p>dictionary.size: {{size}}</p>
         <h3>散列表</h3>
         <p>散列表,hashTable类或者hashMap,是Dictionary类的一种散列表实现方式</p>
-        <p>散列算法,</p>
+        <p>散列算法的作用是尽可能快地找到一个值,散列函数算出一个键作为列表中值的索引,通过键可以快速的找到这个值</p>
+        <p>最常见的散列函数是lose lose,方法就是简单地将每个键值中的每个字母的ASCII值相加</p>
+        <h3>创建散列表</h3>
+        <p>使用数组表示数据结构,构建散列表</p>
+        <pre>
+            <code v-highlight>
+                function HashTable() {
+                    this.table = [];
+                }
+            </code>
+        </pre>
     </div>
 </template>
 
