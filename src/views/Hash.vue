@@ -113,11 +113,70 @@
                 }
             </code>
         </pre>
+        <p>散列表包含三个方法</p>
+        <p>put(key, value),向散列表增加一个新的项</p>
+        <p>remove(key),根据键值从散列表中移除值</p>
+        <p>get(key),根据键返回值</p>
+        <p>同时,需要一个散列函数去构建键值</p>
+        <pre>
+            <code v-highlight>
+                function loseloseHashCode(key) {
+                    var hash = 0;
+                    for(var i = 0, len = key.length; i &gt; len; i ++) {
+                        hash += key.charCodeAt(i);
+                    }
+                    return hash % 37;
+                }
+            </code>
+        </pre>
+        <p>给定一个key值,根据key中每个字符串的ASCII码值和得到一个数字,并将数字累加,并求模运算,得到一个较小的数值</p>
+        <p>实现散列表的方法</p>
+        <p>put方法</p>
+        <pre>
+            <code v-highlight>
+                HashTable.prototype.put = function(key, value) {
+                    var position = loseloseHashCode(key);
+                    this.table[position] = value;
+                }
+            </code>
+        </pre>
+        <p>get方法</p>
+        <pre>
+            <code v-highlight>
+                HashTable.prototype.get = function(key) {
+                    return this.table[loseloseHashCode(key)]; 
+                }
+            </code>
+        </pre>
+        <p>remove方法</p>
+        <pre>
+            <code v-highlight>
+                HashTable.prototype.remove = function(key) {
+                    this.table[loseloseHashCode(key)] = undefined;
+                }
+            </code>
+        </pre>
+        <h3>使用hashTable类</h3>
+        <p>
+            <Input v-model="hashTabelKey" placeholder="输入key" style="width: 150px"></Input>
+            <Input v-model="hashTabelValue" placeholder="输入value" style="width: 150px"></Input>
+            <Button type="primary" @click="hashTabelPut">调用put方法</Button>
+        </p>
+        <p>
+            <Input v-model="hashTabelGetKey" placeholder="输入key" style="width: 150px"></Input>
+            <Button type="primary" @click="hashTabelGet">测试get方法</Button>
+            <span>{{hashTabelGetKeyValue}}</span>
+        </p>
+        <h3>处理散列值的冲突</h3>
+        <p>一些键会有相同的散列值,因此可能会出现同一个位置,但有两个值需要使用,这就是冲突</p>
+        <p>在js中,当反生这种冲突的时候,同一个位置只会记录最后添加的值,造成数据丢失</p>
+        <p>解决冲突有几种办法,分离连接,线性探查,双散列法</p>
     </div>
 </template>
 
 <script>
 import Hash from '../assets/Dictionary.js';
+import HashTable from '../assets/hash.js';
 
 export default {
     name: 'Hash',
@@ -127,8 +186,14 @@ export default {
             value: '',
             query: '',
             result: '',
-            hash: new Hash(),  
-            size: 0
+            hash: new Hash(),
+            size: 0,
+
+            hashTable: new HashTable(),  
+            hashTabelKey: '',
+            hashTabelValue: '',
+            hashTabelGetKey: '',
+            hashTabelGetKeyValue: '',
         };
     },
 
@@ -144,6 +209,16 @@ export default {
         },
         hashHas: function() {
             this.result = this.hash.has(this.query).toString();
+        },
+        hashTabelPut: function() {
+            const _this = this;
+
+            this.hashTable.put(_this.hashTabelKey, _this.hashTabelValue);
+        },
+        hashTabelGet: function() {
+            const _this = this;
+
+            _this.hashTabelGetKeyValue = _this.hashTable.get(_this.hashTabelGetKey);
         }
     }
 }
