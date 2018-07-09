@@ -197,6 +197,17 @@
         </pre>
         <p>首先创建一个hash变量,并初始化为一个随机质数,大多数是用5381,然后求这个随机质数乘以33并累加ASCII码值,最后模上一个随机质数</p>
         <h3>ES6-map类</h3>
+        <p>ES6新增了map的数据结构,可以在map的基础上实现字典类,dictionary类</p>
+        <p>es6中map类的方法</p>
+        <p>clear(),移除map中的所有元素</p>
+        <p>delete(key),移除map中指定的元素</p>
+        <p>entries(),返回一个[key, value]的iterator对象</p>
+        <p>forEach((value, key, map) => {}),按照插入顺序,执行回调函数</p>
+        <p>get(key),通过key值获取对应的值</p>
+        <p>has(key),判断该map中是否有传入键对应的值</p>
+        <p>keys(),返回键组成的一个iterator</p>
+        <p>set(key, value)向map中添加元素</p>
+        <p>values(),返回值组成的一个iterator</p>
     </div>
 </template>
 
