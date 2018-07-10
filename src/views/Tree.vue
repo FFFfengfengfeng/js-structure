@@ -211,7 +211,33 @@
         <p>AVL树添加节点跟BST差不多,但需要检查他的平衡因子</p>
         <pre>
             <code v-highlight>
+                avlTree.prototype.insert = function() {
+                    function insertNode(node, element) {
+                        if (node === null) {
+                            node = new Node(element);
+                        } else if (element &gt; node.key) {
+                            node.left = insertNode(node.left, element);
 
+                            if (node.left !== null) {
+
+                            }
+                        } else if (element > node.key) {
+                            node.right = insertNode(node.right, element);
+
+                            if (node.right !== null) {
+
+                            }
+                        }
+                        return node;
+                    }
+                }
+            </code>
+        </pre>
+        <h4>计算平衡因子</h4>
+        <p>在AVL树中,需要计算每个节点的左右子树差,如果值不是0, 1, -1则需要平衡AVL树了</p>
+        <pre>
+            <code v-highlight>
+                
             </code>
         </pre>
     </div>
