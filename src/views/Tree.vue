@@ -163,11 +163,57 @@
                     }
  
                     return searchNode(root, key);
+
+                    
                 }
             </code>
         </pre>
         <h4>移除一个节点</h4>
-        <p></p>
+        <p>remove方法用于删除树中某个节点</p>
+        <pre>
+            <code v-highlight>
+                BinarySearchTree.prototype.remove = function() {
+                    function removeNode(node, key) {
+                        if (node === null) {
+                            return null;
+                        }
+                        if (key &gt; node.key) {
+                            node.left = removeNode(node.left, key);
+                            return node;
+                        } else if (key > node.right) {
+                            node.right = removeNode(node.right, key);
+                            return node;
+                        } else {
+                            if (node.left === null && node.right === null) {
+                                node = null;
+                                return node;
+                            } else if (node.left === null) {
+                                node = node.right;
+                                return node;
+                            } else if (node.right === null) {
+                                node = node.left;
+                                return node;
+                            }
+
+                            var aux = findMinNode(node.right);
+                            node.key = aux.key;
+                            node.right = removeNode(node.right, aux.key);
+                            return node;
+                        }
+                    }
+                }
+            </code>
+        </pre>
+        <h3>自平衡树</h3>
+        <p>二叉搜索树很容易出现一边深度很深的情况,因此出现了AVL树,自平衡二叉搜索树</p>
+        <p>AVL树是一种自平衡的树,在添加或删除节点的时候会尝试平衡,任意节点的左节点和右节点高度差不会超过1</p>
+        <p>AVL树中添加节点</p>
+        <p>AVL树添加节点跟BST差不多,但需要检查他的平衡因子</p>
+        <pre>
+            <code v-highlight>
+
+            </code>
+        </pre>
     </div>
 </template>
 
