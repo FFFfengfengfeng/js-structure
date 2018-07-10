@@ -237,9 +237,22 @@
         <p>在AVL树中,需要计算每个节点的左右子树差,如果值不是0, 1, -1则需要平衡AVL树了</p>
         <pre>
             <code v-highlight>
-                
+                var heightNode = function(node) {
+                    if (node === null) {
+                        return -1;
+                    } else {
+                        return Max.max(heightNode(node.left)), heightNode(node.right) + 1;
+                    }
+                }
             </code>
         </pre>
+        <h4>AVL旋转</h4>
+        <p>向AVL树插入节点时,可以执行单旋转或双旋转两种平衡操作</p>
+        <p>右-右:向左单旋转</p>
+        <p>左-左:向右单旋转</p>
+        <p>左-右:向右双旋转</p>
+        <p>右-左:向左双旋转</p>
+        <p>其他二叉树还包括红黑树和堆积树</p>
     </div>
 </template>
 
