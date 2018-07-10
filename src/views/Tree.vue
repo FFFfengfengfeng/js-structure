@@ -166,6 +166,8 @@
                 }
             </code>
         </pre>
+        <h4>移除一个节点</h4>
+        <p></p>
     </div>
 </template>
 
