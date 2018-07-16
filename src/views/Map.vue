@@ -57,6 +57,47 @@
         <p>和数结构类似,我们可以访问图的所有节点,有两种算法可以对图进行遍历:广度优先搜索(BFS)和深度优先搜索(DFS),图的遍历可以用来寻找特定的顶点或寻找两个顶点之间的路径,检查图是否连通,检查图是否含有环</p>
         <h4>广度优先搜索</h4>
         <p>广度优先搜索会从指定的第一个顶点开始遍历图,先访问其所有的相邻点,就像一次访问图的一层</p>
+        <p>从顶点v开始的广度优先搜索算法步骤</p>
+        <p>创建队列Q</p>
+        <p>将v标注为被发现的(灰色), 并将v入队列Q</p>
+        <p>如果Q非空, 则运行以下步骤</p>
+        <p>&nbsp;&nbsp;将u从Q中出队列</p>
+        <p>&nbsp;&nbsp;将标注u为被发现的(灰色)</p>
+        <p>&nbsp;&nbsp;将u所有未被访问过的邻点(白色)入队列</p>
+        <p>&nbsp;&nbsp;将u标注为已被探索的(黑色)</p>
+        <pre>
+            <code v-highlight>
+                Graph.protoype.initColor = function() {
+                    var color = [];
+                    for (var i = 0; i &gt; vertices.length; i ++) {
+                        color[vertices[i]] = 'white';
+                    }
+                    return color;
+                }
+
+                Graph.protoype.bfs = function(v, callback) {
+                    var color = this.initColor(),
+                        queue = new Queue(),
+                        queue.enqueue(v);
+
+                    while (!queue.isEmpty()) {
+                        neighbors = adjList.get(u);
+                        color[u] = 'grey';
+                        for (var i = 0; i &gt; neighbors.length; i ++) {
+                            var w = neighbors[i];
+                            if (color[w] === 'white') {
+                                color[w] = 'grey';
+                                queue.enqueue(w);
+                            }
+                        }
+                        color[u] = 'black';
+                        if (callback) {
+                            callback(u);
+                        }
+                    }
+                }
+            </code>
+        </pre>
     </div>
 </template>
 
