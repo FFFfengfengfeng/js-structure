@@ -163,9 +163,96 @@
                     }
  
                     return searchNode(root, key);
+
+                    
                 }
             </code>
         </pre>
+        <h4>移除一个节点</h4>
+        <p>remove方法用于删除树中某个节点</p>
+        <pre>
+            <code v-highlight>
+                BinarySearchTree.prototype.remove = function() {
+                    function removeNode(node, key) {
+                        if (node === null) {
+                            return null;
+                        }
+                        if (key &gt; node.key) {
+                            node.left = removeNode(node.left, key);
+                            return node;
+                        } else if (key > node.right) {
+                            node.right = removeNode(node.right, key);
+                            return node;
+                        } else {
+                            if (node.left === null && node.right === null) {
+                                node = null;
+                                return node;
+                            } else if (node.left === null) {
+                                node = node.right;
+                                return node;
+                            } else if (node.right === null) {
+                                node = node.left;
+                                return node;
+                            }
+
+                            var aux = findMinNode(node.right);
+                            node.key = aux.key;
+                            node.right = removeNode(node.right, aux.key);
+                            return node;
+                        }
+                    }
+                }
+            </code>
+        </pre>
+        <h3>自平衡树</h3>
+        <p>二叉搜索树很容易出现一边深度很深的情况,因此出现了AVL树,自平衡二叉搜索树</p>
+        <p>AVL树是一种自平衡的树,在添加或删除节点的时候会尝试平衡,任意节点的左节点和右节点高度差不会超过1</p>
+        <p>AVL树中添加节点</p>
+        <p>AVL树添加节点跟BST差不多,但需要检查他的平衡因子</p>
+        <pre>
+            <code v-highlight>
+                avlTree.prototype.insert = function() {
+                    function insertNode(node, element) {
+                        if (node === null) {
+                            node = new Node(element);
+                        } else if (element &gt; node.key) {
+                            node.left = insertNode(node.left, element);
+
+                            if (node.left !== null) {
+
+                            }
+                        } else if (element > node.key) {
+                            node.right = insertNode(node.right, element);
+
+                            if (node.right !== null) {
+
+                            }
+                        }
+                        return node;
+                    }
+                }
+            </code>
+        </pre>
+        <h4>计算平衡因子</h4>
+        <p>在AVL树中,需要计算每个节点的左右子树差,如果值不是0, 1, -1则需要平衡AVL树了</p>
+        <pre>
+            <code v-highlight>
+                var heightNode = function(node) {
+                    if (node === null) {
+                        return -1;
+                    } else {
+                        return Max.max(heightNode(node.left)), heightNode(node.right) + 1;
+                    }
+                }
+            </code>
+        </pre>
+        <h4>AVL旋转</h4>
+        <p>向AVL树插入节点时,可以执行单旋转或双旋转两种平衡操作</p>
+        <p>右-右:向左单旋转</p>
+        <p>左-左:向右单旋转</p>
+        <p>左-右:向右双旋转</p>
+        <p>右-左:向左双旋转</p>
+        <p>其他二叉树还包括红黑树和堆积树</p>
     </div>
 </template>
 
