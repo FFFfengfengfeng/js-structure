@@ -52,7 +52,6 @@
                         console.log(arr[i][j]);
                     }
                 }
-                
             </code>
         </pre>
         <h3>js中数组方法参考</h3>
