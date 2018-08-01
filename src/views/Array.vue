@@ -20,6 +20,7 @@
                 console.log(arr); // [1, 2, 3, 4]
             </code>
         </pre>
+        
         <p>第二种可以用unshift方法, unshift方法将会向数组首位添加元素</p>
         <pre>
             <code v-highlight>
