@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>双端队列</title>
+</head>
+<body>
+  <div>
+    <button id="btn1">队列开端添加</button>
+    <button id="btn2">队列开端删除</button>
+    <button id="btn3">队列结尾添加</button>
+    <button id="btn4">队列结尾删除</button>
+    <button id="btn5">队列开端元素</button>
+    <button id="btn6">队列结尾元素</button>
+    <button id="btn7">队列是否为空</button>
+    <button id="btn8">队列长度</button>
+    <button id="btn9">toString</button>
+  </div>
+  <ul id="content"></ul>
+  <h3>检查回文</h3>
+  <input type="text" placeholder="输入单词" id="input"><button onclick="palindromes()">开始</button>
+  <div id="result">结果: </div>
+  <script src="./deque.js"></script>
+  <script>
+    let testQueue = new Deque();
+    
+    document.querySelector('#btn1').onclick = function(e) {
+      let element = Math.floor((Math.random()*10)+1);
+      testQueue.addFront(element);
+      console.log(testQueue);
+      render();
+    }
+    document.querySelector('#btn2').onclick = function(e) {
+      testQueue.removeFront();
+      console.log(testQueue);
+      render();
+    }
+    document.querySelector('#btn3').onclick = function(e) {
+      let element = Math.floor((Math.random()*10)+1);
+      testQueue.addBack(element);
+      console.log(testQueue);
+      render();
+    }
+    document.querySelector('#btn4').onclick = function(e) {
+      testQueue.removeBack();
+      console.log(testQueue);
+      render();
+    }
+    document.querySelector('#btn5').onclick = function(e) {
+      alert(testQueue.front());
+    }
+    document.querySelector('#btn6').onclick = function(e) {
+      alert(testQueue.back());
+    }
+    document.querySelector('#btn7').onclick = function(e) {
+      alert(testQueue.isEmpty());
+    }
+    document.querySelector('#btn8').onclick = function(e) {
+      alert(testQueue.size());
+    }
+    document.querySelector('#btn9').onclick = function(e) {}
+
+    function render() {
+      let str = '';
+
+      for (let i = testQueue.first; i < testQueue.count; i ++) {
+        str += `<li>${testQueue.items[i]}</li>`
+      }
+
+      document.querySelector('#content').innerHTML = str;
+    }
+
+    function palindromes() {
+      let deque = new Deque();
+      let word = document.querySelector('#input').value;
+      let str = [];
+
+      for (let i = 0; i < word.length; i ++) {
+        deque.addFront(word[i]);
+      }
+
+      while(deque.size() > 0) {
+        str.push(deque.removeFront());
+      }
+
+      document.querySelector("#result").innerHTML = `结果: ${str.join('') == word}`
+    }
+  </script>
+</body>
+</html>

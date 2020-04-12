@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>队列</title>
+</head>
+<body>
+  <h3>队列</h3>
+  <div>
+    <button id="btn1">清空队列</button>
+    <button id="btn2">队列是否为空</button>
+    <button id="btn3">添加元素</button>
+    <button id="btn4">删除元素</button>
+    <button id="btn5">返回队列第一个</button>
+    <button id="btn6">返回队列长度</button>
+    <button id="btn7">调用toString</button>
+  </div>
+  <ul id="content"></ul>
+  <h3>击鼓传花游戏</h3>
+  <div id="competitor">参赛者: </div>
+  <input type="number" id="input" placeholder="次数"><button id="start">开始</button>
+  <div id="result">结果: </div>
+  <script src="./queue.js"></script>
+  <script>
+    let testQueue = new Queue();
+    let count = 0;
+
+    document.querySelector('#btn1').onclick = function(e) {
+      testQueue.clear();
+      render();
+    }
+    document.querySelector('#btn2').onclick = function(e) {
+      alert(testQueue.isEmpty());
+    }
+    document.querySelector('#btn3').onclick = function(e) {
+      testQueue.add(count);
+      count ++;
+      render();
+    }
+    document.querySelector('#btn4').onclick = function(e) {
+      testQueue.remove();
+      console.log(testQueue);
+      render();
+    }
+    document.querySelector('#btn5').onclick = function(e) {
+      alert(testQueue.front());
+    }
+    document.querySelector('#btn6').onclick = function(e) {
+      alert(testQueue.size());
+    }
+    document.querySelector('#btn7').onclick = function(e) {
+      alert(testQueue.toString());
+    }
+    
+    function render() {
+      let str = '';
+
+      for (let i in testQueue.items) {
+        str += `<li>${testQueue.items[i]}</li>`;
+      }
+
+      document.querySelector('#content').innerHTML = str;
+    }
+
+    let competitor = ['小明', '小花', '小红', '小李', '小张', '小何'];
+    document.querySelector('#competitor').innerHTML = competitor.join(',');
+    let game = new Queue();
+
+    function start(time) {
+      let out = [], winner;
+      for(let i = 0; i < competitor.length; i ++) {
+        game.add(competitor[i]);
+      }
+
+      while(game.size() > 1) {
+        for (let i = 0; i < time; i ++) {
+          game.add(game.remove());
+        }
+        out.push(game.remove());
+      }
+
+      return {
+        out: out,
+        winner: game.remove()
+      }
+    }
+
+    document.querySelector('#start').onclick = function(e) {
+      let time = Number(document.querySelector('input').value);
+      let result = start(time);
+      let out = result.out.join(',');
+
+      document.querySelector('#result').innerHTML = `结果: <p>淘汰者: ${out}</p><p>胜出: ${result.winner}</p>`;
+    }
+
+  </script>
+</body>
+</html>
