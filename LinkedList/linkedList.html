@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>链表</title>
+</head>
+<body>
+  <button id="btn1">添加元素</button>
+  <input type="text" placeholder="删除的位置" id="input1" />
+  <button id="btn2">根据位置删除元素</button>
+  <ul id="content"></ul>
+  <script src="./linkedList.js"></script>
+  <script>
+    let test = new LinkedList();
+
+    document.querySelector('#btn1').onclick =function(e) {
+      let num = Math.floor((Math.random()*10)+1);
+      test.add(num);
+      render();
+    }
+
+    document.querySelector('#btn2').onclick = function(e) {
+      test.removeAt(parseInt(document.querySelector('#input1').value));
+      render();
+    }
+
+    function render() {
+      let str = '';
+      let current = test.head;
+
+      while(current) {
+        str += `<li>${current.element}</li>`;
+        current = current.next;
+      }
+
+      document.querySelector('#content').innerHTML = str;
+    }
+  </script>
+</body>
+</html>
