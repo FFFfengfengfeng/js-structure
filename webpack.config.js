@@ -1,5 +1,6 @@
 const path = require('path')
-const DashBoardPlugin = require('webpack-dashboard/plugin')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -9,7 +10,8 @@ module.exports = {
   entry: './index.js',
 
   output: {
-    filename: 'bundle.js'
+    filename: 'app.[hash].js',
+    path: path.join(__dirname,'./dist')
   },
 
   module: {
@@ -22,11 +24,19 @@ module.exports = {
   },
 
   devServer: {
-    publicPath: '/dist',
-    port: 3000
+    publicPath: '/',
+    port: 3000,
+    hot: true,
   },
 
+  devtool: 'cheap-module-eval-source-map',
+
   plugins: [
-    new DashBoardPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: path.join(__dirname, './index.html'),
+      inject: true
+    })
   ]
 }
